@@ -27,9 +27,9 @@ except:
 indice_correcao_atual = periodos[-1][2]/periodos[0][2]
 st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:.2f}')
 if st.checkbox("Vende férias?"):
-   CONSTANTE = 1.022467733262151
+   CONSTANTE = (13+2/3)/12
 else:
-  CONSTANTE = 1
+  CONSTANTE = 13/12
 
 st.sidebar.header("Acompanhe o cálculo!")
 for periodo in periodos:
