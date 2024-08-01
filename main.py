@@ -32,7 +32,7 @@ if vende_ferias:
 else:
     CONSTANTE = 13/12 
 
-st.warning("Cálculos aproximados. Não leve a sério.")
+st.warning('Conta "de padaria". Por favor, não leve a sério!')
 if st.button("Vou prosseguir por mera curiosidade..."):
 
     st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
@@ -58,4 +58,4 @@ if st.button("Vou prosseguir por mera curiosidade..."):
     st.header(f'Valor principal: R${calculo:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
     st.header(f'Correção monetária:R${correcao_monetaria:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
     st.header(f'Juros: R${juros:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
-    st.header(f'Total: R${total:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
+    st.header(f'Total (para Julho de 2024): R${total:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
