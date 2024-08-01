@@ -24,7 +24,7 @@ periodos = [
     ["de 02/2024 a 07/2024",  6, 44008.52]
   ]
 
-indice_correcao_atual = periodos[7][2]/periodos[0][2]
+indice_correcao_atual = periodos[-1][2]/periodos[0][2]
 st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:.2f}')
 
 st.sidebar.header("Acompanhe o cálculo!")
