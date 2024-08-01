@@ -22,14 +22,14 @@ periodos = [
 try:
     ultimo_ats = float(ultimo_ats)
 except:
-    st.rerun()
+    st.stop()
 
 indice_correcao_atual = periodos[-1][2]/periodos[0][2]
 st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:.2f}')
-if st.checkbox("Vendeu férias?"):
+if st.checkbox("Vende férias?"):
    CONSTANTE = 1.022467733262151
 else:
-   CONSTANTE = 1
+  CONSTANTE = 1
 
 st.sidebar.header("Acompanhe o cálculo!")
 for periodo in periodos:
