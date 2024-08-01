@@ -3,13 +3,8 @@ import time
 
 st.title('Testes aleatórios... (ATS)')
 ultimo_ats = st.text_input('Entre com o valor do ATS da folha de 12/2007')
+ultimo_ats = ultimo_ats.replace(',', '.')
 
-try:
-    ultimo_ats = float(ultimo_ats)
-except:
-    st.stop()
-
-CONSTANTE = 1 #1.022467733262151
 calculo = 0
 subsidio_anterior = 24500.00
 periodos = [
@@ -24,8 +19,17 @@ periodos = [
     ["de 02/2024 a 07/2024",  6, 44008.52]
   ]
 
+try:
+    ultimo_ats = float(ultimo_ats)
+except:
+    st.rerun()
+
 indice_correcao_atual = periodos[-1][2]/periodos[0][2]
 st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:.2f}')
+if st.checkbox("Vendeu férias?"):
+   CONSTANTE = 1.022467733262151
+else:
+   CONSTANTE = 1
 
 st.sidebar.header("Acompanhe o cálculo!")
 for periodo in periodos:
@@ -39,6 +43,6 @@ for periodo in periodos:
   subsidio_anterior = periodo[2]
   st.sidebar.write(f'Valor principal: R$ {calculo:.2f}')
   st.sidebar.write('---------------------------')
-  time.sleep(1)
+  time.sleep(0.5)
 
 st.header(f'Valor principal: R${calculo:.2f}')
