@@ -26,10 +26,20 @@ except:
 
 indice_correcao_atual = periodos[-1][2]/periodos[0][2]
 st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:.2f}')
-if st.checkbox("Vende férias?"):
-   CONSTANTE = (13+2/3)/12
+
+opcao = st.radio(
+   "Vendendo férias?",
+   ['1 período', '2 períodos', 'Não'], 
+   index=1
+)
+
+# Verifica a opção selecionada
+if opcao == '1 período':
+    CONSTANTE = 1.305
+elif opcao == '2 períodos':
+    CONSTANTE = (13 + 2/3) / 12
 else:
-  CONSTANTE = 13/12
+    CONSTANTE = 0 
 
 st.sidebar.header("Acompanhe o cálculo!")
 for periodo in periodos:
