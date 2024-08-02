@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 
+st.set_page_config(page_title="ATS", page_icon=":moneybag:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title('Estimativa do valor do ATS')
 ultimo_ats = st.text_input('Entre com o valor do ATS da folha de 12/2007')
 ultimo_ats = ultimo_ats.replace(',', '.')
@@ -32,12 +33,16 @@ if vende_ferias:
 else:
     CONSTANTE = 13/12 
 
-st.warning('Conta "de padaria". Por favor, não leve a sério!')
-if st.button("Vou prosseguir por mera curiosidade..."):
+st.warning('ATENÇÃO! Isso é uma conta "de padaria". Não leve a sério!')
+if st.button("Compreendo e vou prosseguir por mera curiosidade...", type="primary"):
+
+    st.write('Progresso dos cálculos:')
+    bar = st.progress(10)
 
     st.header(f'ATS atual: R$ {ultimo_ats * indice_correcao_atual:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
 
     st.sidebar.header("Acompanhe o cálculo!")
+    
     for periodo in periodos:
         st.sidebar.write(f'Calculando valor principal para o periodo {periodo[0]}')
         st.sidebar.write(f'Multiplicando por quantidade de meses: {periodo[1]}')
@@ -51,9 +56,14 @@ if st.button("Vou prosseguir por mera curiosidade..."):
         st.sidebar.write('---------------------------')
         time.sleep(0.5)
 
+    bar.progress(50)
+    time.sleep(0.5)
+
     correcao_monetaria = calculo*(989647.26/1491860.54) # baseado na correção divulgada no grupo
     juros = calculo*(1399234.41/1491860.54) # baseado na correção divulgada no grupo
     total = calculo + correcao_monetaria + juros
+
+    bar.progress(100)
 
     st.header(f'Valor principal: R${calculo:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
     st.header(f'Correção monetária:R${correcao_monetaria:,.2f}'.replace('.', 'X').replace(',', '.').replace('X', ','))
