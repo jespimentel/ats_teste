@@ -3,6 +3,7 @@ import time
 
 st.set_page_config(page_title="ATS", page_icon=":moneybag:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title('Estimativa do valor do ATS')
+st.write("Criado por João Sampaio e Pimentel em 07/2024")
 ultimo_ats = st.text_input('Entre com o valor do ATS da folha de 12/2007')
 ultimo_ats = ultimo_ats.replace(',', '.')
 
